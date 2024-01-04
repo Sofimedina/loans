@@ -55,15 +55,12 @@ public class LoansServiceImpl implements ILoanService {
 
     @Override
     public boolean updateLoan(LoansDto loansDto) {
-        boolean isUpdated=false;
-
         Loans loan=loansRepository
-                .findByMobileNumber(loansDto.getMobileNumber())
-                .orElseThrow(()->new ResourceNotFoundException("Loan","Mobile Number",loansDto.getMobileNumber()));
+                .findByLoanNumber(loansDto.getLoanNumber())
+                .orElseThrow(()->new ResourceNotFoundException("Loan","Loan Number",loansDto.getLoanNumber()));
 
         loansRepository.save(LoansMapper.mapToLoan(loansDto,loan));
-        isUpdated=true;
-        return isUpdated;
+        return true;
     }
 
     @Override
@@ -71,7 +68,7 @@ public class LoansServiceImpl implements ILoanService {
         Loans loan=loansRepository
                 .findByMobileNumber(mobileNumber)
                 .orElseThrow(()->new ResourceNotFoundException("Loan","Mobile Number",mobileNumber));
-        loansRepository.delete(loan);
+        loansRepository.deleteById(loan.getLoanId());
 
         return true;
     }

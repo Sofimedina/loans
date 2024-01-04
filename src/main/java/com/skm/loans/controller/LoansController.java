@@ -41,10 +41,10 @@ public class LoansController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> createLoan(@Valid @RequestBody LoansDto loansDto) {
+    public ResponseEntity<ResponseDto> updateLoan(@Valid @RequestBody LoansDto loansDto) {
         if (loanService.updateLoan(loansDto)){
             return ResponseEntity
-                    .status(HttpStatus.CREATED)
+                    .status(HttpStatus.OK)
                     .body(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200));
         }else {
             return ResponseEntity
