@@ -1,13 +1,12 @@
 package com.skm.loans.controller;
 
 import com.skm.loans.constants.LoansConstants;
-import com.skm.loans.dto.AccountsContactInfoDto;
+import com.skm.loans.dto.loansContactInfoDto;
 import com.skm.loans.dto.LoansDto;
 import com.skm.loans.dto.ResponseDto;
 import com.skm.loans.service.ILoanService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
-@EnableConfigurationProperties(value = AccountsContactInfoDto.class)
+@EnableConfigurationProperties(value = loansContactInfoDto.class)
 public class LoansController {
     private ILoanService loanService;
 
@@ -32,7 +31,7 @@ public class LoansController {
     private Environment environment;
 
     @Autowired
-    private AccountsContactInfoDto accountsContactInfoDto;
+    private loansContactInfoDto loansContactInfoDto;
 
     public LoansController(ILoanService loanService) {
         this.loanService = loanService;
@@ -101,9 +100,9 @@ public class LoansController {
                 .body(environment.getProperty("JAVA_HOME"));
     }
 
-    @GetMapping("/accounts-info")
-    public ResponseEntity<AccountsContactInfoDto> getAccountsInfo(){
+    @GetMapping("/loans-info")
+    public ResponseEntity<loansContactInfoDto> getLoansInfo(){
         return ResponseEntity.status(HttpStatus.OK)
-                .body(accountsContactInfoDto);
+                .body(loansContactInfoDto);
     }
 }
