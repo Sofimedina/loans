@@ -14,4 +14,17 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  profiles:
+    active:
+      - qa
 
+build:
+  version: 1.1
+accounts:
+  message: "Please contact loans team"
+  contact-details:
+    number: "3875121101"
+    email: "sofi.k.medina@gmail.com"
+  onCallSupport:
+    - 3875121102
+    - 3875121103
