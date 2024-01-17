@@ -1,7 +1,7 @@
 package com.skm.loans.controller;
 
 import com.skm.loans.constants.LoansConstants;
-import com.skm.loans.dto.loansContactInfoDto;
+import com.skm.loans.dto.LoansContactInfoDto;
 import com.skm.loans.dto.LoansDto;
 import com.skm.loans.dto.ResponseDto;
 import com.skm.loans.service.ILoanService;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
-@EnableConfigurationProperties(value = loansContactInfoDto.class)
+@EnableConfigurationProperties(value = LoansContactInfoDto.class)
 public class LoansController {
     private ILoanService loanService;
 
@@ -31,7 +31,7 @@ public class LoansController {
     private Environment environment;
 
     @Autowired
-    private loansContactInfoDto loansContactInfoDto;
+    private LoansContactInfoDto loansContactInfoDto;
 
     public LoansController(ILoanService loanService) {
         this.loanService = loanService;
@@ -101,7 +101,7 @@ public class LoansController {
     }
 
     @GetMapping("/loans-info")
-    public ResponseEntity<loansContactInfoDto> getLoansInfo(){
+    public ResponseEntity<LoansContactInfoDto> getLoansInfo(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(loansContactInfoDto);
     }
