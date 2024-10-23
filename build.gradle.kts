@@ -39,6 +39,8 @@ dependencies {
 //	runtimeOnly("com.h2database:h2")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.3")
+
 }
 
 dependencyManagement {
